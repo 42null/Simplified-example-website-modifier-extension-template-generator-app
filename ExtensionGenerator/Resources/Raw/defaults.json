@@ -1,0 +1,77 @@
+﻿{
+  "header": "Settings",
+  "settingKey": "SECTOR-ALPHA",
+  "settings": [
+    {
+      "name": "Name of Your Extension",
+      "value": "Example Extension",
+      "description": "This will be used as the name of your extension by the rest of the project",
+      "placeHolder": "A short name for your extension",
+      "settingKey": "extension_display_name"
+    }
+  ],
+  "childSectors": [
+    {
+      "header": "Naming & Text",
+      "settingKey": "main",
+      "settings": [
+        {
+          "name": "Name of Your Extension",
+          "value": "Example Extension",
+          "description": "This will be used as the name of your extension by the rest of the project",
+          "placeHolder": "A short name for your extension",
+          "settingKey": "extension_display_name"
+        },
+        {
+          "name": "Log Header",
+          "value": "Example extension log",
+          "description": "Combined with a colon, log messages in the console will use this header",
+          "placeHolder": "[<header>]: (console msg)",
+          "settingKey": "log_header"
+        }
+      ]
+    },
+    {
+      "header": "Popup Page Settings",
+      "settingKey": "popup_page",
+      "childSelectors": [
+        {
+          "header": "Naming & Text",
+          "settingKey": "main",
+          "settings": [
+            {
+              "name": "Top Image",
+              "value": "/icons/logo.svg",
+              "description": "The path for your popup page topmost image",
+              "placeHolder": "svg path",
+              "settingKey": "src"
+            },
+            {
+              "name": "Popup Page Top Image Alt",
+              "value": "[Example Project's Icon]",
+              "description": "A description of your image that explains what it is if it fails to load",
+              "placeHolder": "[Alt here]",
+              "settingKey": "alt"
+            },
+            {
+              "name": "Popup Page Top Image Title",
+              "value": "Thanks for installing! :)",
+              "description": "The text that appears when the image is hovered over",
+              "placeHolder": "Message...",
+              "settingKey": "title"
+            }
+          ]
+        }
+      ],
+      "settings": [
+        {
+          "name": "Popup Page Top Image Title",
+          "value": "Thanks for installing! :)",
+          "description": "The text that appears when the image is hovered over",
+          "placeHolder": "Message...",
+          "settingKey": "title"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,4 @@
-namespace ExtensionGenerator.Resources.Styles;
-
+namespace ExtensionGenerator;
 public class ColorInterpreter //TODO: Rename to ColorController?
 {
     private Color primary, secondary, tertiary;
