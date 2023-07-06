@@ -8,68 +8,102 @@
       "description": "This will be used as the name of your extension by the rest of the project",
       "placeHolder": "A short name for your extension",
       "settingKey": "extension_display_name"
+    },{
+      "name": "Log Header",
+      "value": "Example extension log",
+      "description": "Combined with a colon, log messages in the console will use this header",
+      "placeHolder": "[<header>]: (console msg)",
+      "settingKey": "log_header"
+    },{
+      "name": "Internal Log Header",
+      "value": "Example internal extension log",
+      "description": "Combined with a colon, log messages in the console will use this header",
+      "placeHolder": "[<header>]: (console msg)",
+      "settingKey": "log_header_internal"
     }
   ],
   "childSectors": [
     {
-      "header": "Naming & Text",
-      "settingKey": "main",
-      "settings": [
-        {
-          "name": "Name of Your Extension",
-          "value": "Example Extension",
-          "description": "This will be used as the name of your extension by the rest of the project",
-          "placeHolder": "A short name for your extension",
-          "settingKey": "extension_display_name"
-        },
-        {
-          "name": "Log Header",
-          "value": "Example extension log",
-          "description": "Combined with a colon, log messages in the console will use this header",
-          "placeHolder": "[<header>]: (console msg)",
-          "settingKey": "log_header"
-        }
-      ]
-    },
-    {
       "header": "Popup Page Settings",
       "settingKey": "popup_page",
-      "childSelectors": [
+      "childSectors": [
         {
-          "header": "Naming & Text",
+          "header": "Top Image",
           "settingKey": "main",
           "settings": [
             {
-              "name": "Top Image",
-              "value": "/icons/logo.svg",
-              "description": "The path for your popup page topmost image",
-              "placeHolder": "svg path",
-              "settingKey": "src"
-            },
-            {
-              "name": "Popup Page Top Image Alt",
-              "value": "[Example Project's Icon]",
-              "description": "A description of your image that explains what it is if it fails to load",
-              "placeHolder": "[Alt here]",
-              "settingKey": "alt"
-            },
-            {
-              "name": "Popup Page Top Image Title",
+              "name": "Image Title",
               "value": "Thanks for installing! :)",
               "description": "The text that appears when the image is hovered over",
               "placeHolder": "Message...",
               "settingKey": "title"
+            },
+            {
+              "name": "Image Path",
+              "value": "/icons/logo.svg",
+              "description": "The path for your popup page topmost image, /icons/logo.svg is default",
+              "placeHolder": "image path",
+              "settingKey": "src"
+            },
+            {
+              "name": "Image Alt",
+              "value": "[Example Project's Icon]",
+              "description": "A description of your image that explains what it is if it fails to load",
+              "placeHolder": "[Alt here]",
+              "settingKey": "alt"
+            }
+          ]
+        },{
+          "header": "Colors",
+          "settingKey": "colors",
+          "settings": [
+            {
+              "name": "Primary",
+              "value": "#8bda67",
+              "description": "Use a 3 or 6 digit hexcode color value",
+              "placeHolder": "#ffffff",
+              "settingKey": "primary"
+            },{
+              "name": "Primary (Light)",
+              "value": "#1a5200",
+              "description": "Use a 3 or 6 digit hexcode color value",
+              "placeHolder": "#ffffff",
+              "settingKey": "primary_light"
+            },{
+              "name": "Primary (Dark)",
+              "value": "#c2ed7d",
+              "description": "Use a 3 or 6 digit hexcode color value",
+              "placeHolder": "#ffffff",
+              "settingKey": "primary_light"
+            }
+          ]
+        },{
+          "header": "Sites",
+          "settingKey": "link_sites",
+          "settings": [
+            {
+              "name": "Header Message",
+              "value": "View Extension On...",
+              "description": "This is the text above the next provided links",
+              "placeHolder": "Header before links",
+              "settingKey": "link_sites_header"
+            },{
+              "name": "Footer Message",
+              "value": "Footer message...",
+              "description": "The small text at the bottommost part of the page",
+              "placeHolder": "Footer message...",
+              "settingKey": "popup_page_footer_bottommost_message"
             }
           ]
         }
       ],
       "settings": [
         {
-          "name": "Popup Page Top Image Title",
-          "value": "Thanks for installing! :)",
-          "description": "The text that appears when the image is hovered over",
-          "placeHolder": "Message...",
-          "settingKey": "title"
+          "name": "Empty Message",
+          "value": "Blank",
+          "description": "This should not be here in release",
+          "placeHolder": "Temp for testing",
+          "settingKey": "debugging"
         }
       ]
     }

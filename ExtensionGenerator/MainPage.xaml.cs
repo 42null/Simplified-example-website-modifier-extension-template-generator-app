@@ -11,25 +11,11 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Storage;
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Accessibility;
+using System.Diagnostics;
+using Microsoft.Maui.HotReload;
 
 namespace ExtensionGenerator;
 
-// public class Sector
-// {
-//     public String header { get; set; }//TOD: Rename to name?
-//     public String settingKey { get; set; }
-//     public List<Setting> settings { get; set; }
-//     public List<Sector> childSectors { get; set; }
-// }
-//
-// public class Setting
-// {
-//     public String name { get; set; }
-//     public String value { get; set; }
-//     public String description { get; set; }
-//     public String placeHolder { get; set; }
-//     public String settingKey { get; set; }
-// }
 public class Sector
 {
     [JsonPropertyName("header")]
@@ -112,15 +98,16 @@ public partial class MainPage : ContentPage
         {
             await using var stream = await FileSystem.OpenAppPackageFileAsync(fileName);
             using var reader = new StreamReader(stream);
+            
 
             var jsonAsStringContents = reader.ReadToEnd();
-            // List<Sector> sectors = JsonSerializer.Deserialize<List<Sector>>(jsonAsStringContents);
+            // Console.WriteLine(jsonAsStringContents);
             Sector sector = JsonSerializer.Deserialize<Sector>(jsonAsStringContents);
 
             StackLayout sectorElement = await CreateSectorElementAsync(sector);
 
             sectorElement.Margin = new Thickness(0, 20, 210, 20); //TODO: Make programmatic once icon size is working
-
+            
             topInfoArea.Children.Add(sectorElement);
         }
         catch (Exception ex)
@@ -151,62 +138,68 @@ public partial class MainPage : ContentPage
 
         sectorElement.Children.Add(header);
 
-        foreach (var setting in sector.Settings)
+        if (sector.Settings is { Count: > 0 })
         {
-            StackLayout settingElement = new StackLayout
+            foreach (Setting setting in sector.Settings)
             {
-                Orientation = StackOrientation.Horizontal,
-                HorizontalOptions = LayoutOptions.Center,
-            };
-            
-            Label label = new Label
-            {
-                Text = setting.Name + ": ",
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.End,
-                WidthRequest = SETTINGS_WIDTH_LABEL,
-                Padding = SETTINGS_SPACEING
-            };
-            Entry entry = new Entry
-            {
-                Text = setting.Value,
-                Placeholder = setting.PlaceHolder,
-                VerticalOptions = LayoutOptions.Center,
-                WidthRequest = SETTINGS_WIDTH_ENTRY,
-                BackgroundColor = colorController.GetPrimary(),
-                Margin = SETTINGS_SPACEING
-            };
-            //TODO: Because same, build icon once and clone?
-            ImageButton infoIcon = new ImageButton
-            {
-                Source = "info.png",
-                HeightRequest = ICON_WIDTH,
-                WidthRequest = ICON_WIDTH,
-            };
+                StackLayout settingElement = new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal,
+                    HorizontalOptions = LayoutOptions.Center,
+                };
+                
+                Label label = new Label
+                {
+                    Text = setting.Name + ": ",
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalTextAlignment = TextAlignment.End,
+                    WidthRequest = SETTINGS_WIDTH_LABEL,
+                    Padding = SETTINGS_SPACEING
+                };
+                Entry entry = new Entry
+                {
+                    Text = setting.Value,
+                    Placeholder = setting.PlaceHolder,
+                    VerticalOptions = LayoutOptions.Center,
+                    WidthRequest = SETTINGS_WIDTH_ENTRY,
+                    BackgroundColor = colorController.GetPrimary(),
+                    Margin = SETTINGS_SPACEING
+                };
+                //TODO: Because same, build icon once and clone?
+                ImageButton infoIcon = new ImageButton
+                {
+                    Source = "info.png",
+                    HeightRequest = ICON_WIDTH,
+                    WidthRequest = ICON_WIDTH,
+                };
 
-            // ToolTipProperties.SetText(infoIcon, "Click to Save your data");
+                // ToolTipProperties.SetText(infoIcon, "Click to Save your data");
 
-            settingElement.Children.Add(label);
-            settingElement.Children.Add(entry);
-            settingElement.Children.Add(infoIcon);
+                settingElement.Children.Add(label);
+                settingElement.Children.Add(entry);
+                settingElement.Children.Add(infoIcon);
 
-            //Adds period ending if one does not already exist.
-            ToolTipProperties.SetText(infoIcon,
-                setting.Description + (setting.Description.EndsWith(".") ? "" : "."));
-            
-            sectorElement.Children.Add(settingElement);
+                //Adds period ending if one does not already exist.
+                ToolTipProperties.SetText(infoIcon,
+                    setting.Description + (setting.Description.EndsWith(".") ? "" : "."));
+                
+                sectorElement.Children.Add(settingElement);
+            }
+        
         }
 
         // Recursive call to process child sectors
-        if (sector.ChildSectors != null && sector.ChildSectors.Count > 0)
+        if (sector.ChildSectors is { Count: > 0 })
         {
+            Console.WriteLine("ChildSectors true with "+sector.ChildSectors.Count + " for '"+sector.Header+"'");
             foreach (var childSector in sector.ChildSectors)
             {
-                var childSectorElement = await CreateSectorElementAsync(childSector);
+                // Console.WriteLine("Child sector: " + childSector.Header);
+                StackLayout childSectorElement = await CreateSectorElementAsync(childSector);
                 sectorElement.Children.Add(childSectorElement);
             }
         }
-
+        
         return sectorElement;
     }
 
