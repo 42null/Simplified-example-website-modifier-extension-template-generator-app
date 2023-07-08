@@ -60,21 +60,43 @@
             {
               "name": "Primary",
               "value": "#8bda67",
-              "description": "Use a 3 or 6 digit hexcode color value",
-              "placeHolder": "#ffffff",
+              "specialType": "Color",
               "settingKey": "primary"
             },{
               "name": "Primary (Light)",
               "value": "#1a5200",
-              "description": "Use a 3 or 6 digit hexcode color value",
-              "placeHolder": "#ffffff",
+              "specialType": "Color",
               "settingKey": "primary_light"
             },{
               "name": "Primary (Dark)",
               "value": "#c2ed7d",
-              "description": "Use a 3 or 6 digit hexcode color value",
-              "placeHolder": "#ffffff",
-              "settingKey": "primary_light"
+              "specialType": "Color",
+              "settingKey": "primary_dark"
+            },{
+              "name": "Primary ",
+              "value": "#e1e2e1#",
+              "specialType": "Color",
+              "settingKey": "primary_light_background"
+            },{
+              "name": "Primary ",
+              "value": "#f5f5f6#",
+              "specialType": "Color",
+              "settingKey": "primary_light_foreground"
+            },{
+              "name": "Primary ",
+              "value": "#000000#",
+              "specialType": "Color",
+              "settingKey": "primary_text"
+            },{
+              "name": "Primary ",
+              "value": "#14d1d1",
+              "specialType": "Color",
+              "settingKey": "slider_background"
+            },{
+              "name": "Primary ",
+              "value": "#b6b6b7#",
+              "specialType": "Color",
+              "settingKey": "slider_fill"
             }
           ]
         },{
@@ -94,16 +116,58 @@
               "placeHolder": "Footer message...",
               "settingKey": "popup_page_footer_bottommost_message"
             }
+          ],
+          "childSectors": [
+            {
+              "header": "Location (#1)",
+              "settingKey": "github",
+              "settings": [
+                {
+                  "name": "Name",
+                  "value": "Github",
+                  "description": "This is the text that will appear next to the site icon and link to that site",
+                  "placeHolder": "Site name",
+                  "settingKey": "name"
+                },{
+                  "name": "Icon Path",
+                  "value": "/icons/github-mark.png",
+                  "description": "Place the path to the image you want to use and the icon for this site",
+                  "placeHolder": "/icons/...",
+                  "settingKey": "icon_url"
+                },{
+                  "name": "Link Url",
+                  "value": "https://github.com/42null/Simplified-example-website-modifier-extension-template.git",
+                  "description": "Place the url to the website you want to link here",
+                  "placeHolder": "https://...",
+                  "settingKey": "link_url"
+                }
+              ] 
+            },{
+              "header": "Location (#2)",
+              "settingKey": "firefox",
+              "settings": [
+                {
+                  "name": "Name",
+                  "value": "Add-Ons",
+                  "description": "This is the text that will appear next to the site icon and link to that site",
+                  "placeHolder": "Site name",
+                  "settingKey": "name"
+                },{
+                  "name": "Icon Path",
+                  "value": "/icons/Fx-Browser-icon-fullColor.svg",
+                  "description": "Place the path to the image you want to use and the icon for this site",
+                  "placeHolder": "/icons/...",
+                  "settingKey": "icon_url"
+                },{
+                  "name": "Link Url",
+                  "value": "/icons/Fx-Browser-icon-fullColor.svg",
+                  "description": "Place the url to the website you want to link here",
+                  "placeHolder": "https://...",
+                  "settingKey": "link_url"
+                }
+              ]
+            }
           ]
-        }
-      ],
-      "settings": [
-        {
-          "name": "Empty Message",
-          "value": "Blank",
-          "description": "This should not be here in release",
-          "placeHolder": "Temp for testing",
-          "settingKey": "debugging"
         }
       ]
     }
