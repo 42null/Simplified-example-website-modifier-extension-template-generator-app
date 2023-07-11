@@ -11,7 +11,7 @@
             Padding="30,0">
                 <VerticalStackLayout x:Name="top_info_area">
                     <Label
-                        Text="Config File Generator V0.0.4 (pre-alpha)" 
+                        Text="Config File Generator V0.0.5 (pre-alpha)" 
                         SemanticProperties.HeadingLevel="Level1"
                         FontSize="32"
                         HorizontalOptions="Center" />
@@ -34,12 +34,12 @@
                     <Entry Placeholder="Your name here" VerticalOptions="Center"  BackgroundColor="{StaticResource Primary}" />
                 </StackLayout>-->
 
-                <!-- <Button -->
-                <!--     x:Name="CounterBtn" -->
-                <!--     Text="Click me" -->
-                <!--     SemanticProperties.Hint="Counts the number of times you click" -->
-                <!--     Clicked="OnCounterClicked" -->
-                <!--     HorizontalOptions="Center" /> -->
+                <Button
+                    x:Name="CounterBtn"
+                    Text="Generate File"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Clicked="OnCounterClicked"
+                    HorizontalOptions="Center" />
         </VerticalStackLayout>
     </ScrollView>
 

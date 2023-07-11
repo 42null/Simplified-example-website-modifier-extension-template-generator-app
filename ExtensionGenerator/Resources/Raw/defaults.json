@@ -74,17 +74,17 @@
               "settingKey": "primary_dark"
             },{
               "name": "Primary ",
-              "value": "#e1e2e1#",
+              "value": "#e1e2e1",
               "specialType": "Color",
               "settingKey": "primary_light_background"
             },{
               "name": "Primary ",
-              "value": "#f5f5f6#",
+              "value": "#f5f5f6",
               "specialType": "Color",
               "settingKey": "primary_light_foreground"
             },{
               "name": "Primary ",
-              "value": "#000000#",
+              "value": "#000000",
               "specialType": "Color",
               "settingKey": "primary_text"
             },{
@@ -94,7 +94,7 @@
               "settingKey": "slider_background"
             },{
               "name": "Primary ",
-              "value": "#b6b6b7#",
+              "value": "#b6b6b7",
               "specialType": "Color",
               "settingKey": "slider_fill"
             }

@@ -1,3 +1,7 @@
+using System.Linq;
+using System.Text;
+using static System.IO.File;
+
 namespace ExtensionGenerator;
 
 using System;
@@ -34,9 +38,10 @@ public class JsonController
     
     //Stored generateable
     private Layout stackLayout;
-    private JsonObject JsonObject;
-    private Array storedHashes; //TODO: Upgrade to hashmap equivalent
+    // private JsonObject JsonObject;
+    private JsonObject lastTransversedBuiltSettings;
     
+        
     public JsonController(String filename, ColorInterpreter colorController)
     {
         this.jsonFilename = filename;
@@ -58,8 +63,6 @@ public class JsonController
 
         // stackLayout = await GetStackFromFile();
         Console.WriteLine(stackLayout.Children.ToString());
-        Console.WriteLine("----------");
-        Console.WriteLine(stackLayout.Children[1]);
         
         // Action<Layout> traverse = null;
         Func<Layout, JsonNode?> traverse = null;
@@ -72,17 +75,22 @@ public class JsonController
                 // Check if the child is a layout
                 if (element is Layout childLayout)
                 {
-                    // jsonObject.Add(  traverse(childLayout));
-                    // jsonObject.Add(Guid.NewGuid().ToString(), traverse(childLayout));
 
                     if (String.IsNullOrEmpty(childLayout.AutomationId))
                     {
-                        JsonNode? node = traverse(childLayout);
-                        // node.GetValue();
-                        // if (node is JsonObject jsonObjectFromNode)
-                        // {
-                        //     jsonObjectFromNode.GetValue<>()
-                        // }
+
+                        JsonNode? jsonNode = traverse(childLayout);
+                        JsonObject test = (JsonObject)jsonNode;
+
+                        var firstProperty = test.FirstOrDefault();
+                        if (!string.IsNullOrEmpty(firstProperty.Key) && !string.IsNullOrEmpty(firstProperty.Value.ToString()))
+                        {
+                            // Console.WriteLine("firstProperty.Value = "+firstProperty.Value);
+                            jsonObject.Add(firstProperty.Key, firstProperty.Value.ToString());
+                        }
+                        
+                        // jsonObject.Add(childLayout.AutomationId, traverse(childLayout));
+                        
                     }
                     else
                     {
@@ -100,13 +108,26 @@ public class JsonController
 
             return jsonObject;
         };
-        JsonNode? result = traverse(stackLayout);
-        Console.WriteLine("result = "+result);
+        lastTransversedBuiltSettings = (JsonObject) traverse(stackLayout);
+        Console.WriteLine("result = \n"+lastTransversedBuiltSettings.ToJsonString());
+
+        // string json = result.ToString();
+        // FileManager.SaveFile(fileName, json, CancellationToken.None);
         
         return primaryObject;
     }
 
-    
+    public string getSettingsJsonString()
+    {
+        if (lastTransversedBuiltSettings == null)
+        {
+            GenerateJsonFromSettings();
+        }
+
+        return lastTransversedBuiltSettings.ToString();
+    }
+
+
     private async Task<Layout> LoadMauiAssetJSONAsync(String fileName)
     {
         try
