@@ -1,8 +1,9 @@
 using System.Linq;
 using System.Text;
+using ExtensionGenerator;
 using static System.IO.File;
 
-namespace ExtensionGenerator;
+namespace TabbedPageSample;
 
 using System;
 using System.Text.Json;

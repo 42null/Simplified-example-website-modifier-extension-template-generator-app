@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extensionGenerator="clr-namespace:ExtensionGenerator"
+             x:Class="ExtensionGenerator.JsonFileEditor">
+
+    <ScrollView>
+        <!--VerticalOptions="Center">-->
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0">
+            <VerticalStackLayout x:Name="top_info_area">
+                <Label
+                    Text="Config File Generator V0.0.6 (pre-alpha)"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <Button
+                x:Name="GeneratorButton"
+                Text="Save File"
+                SemanticProperties.Hint="Saves the page's settings for use later"
+                Clicked="OnGenerateButtonClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

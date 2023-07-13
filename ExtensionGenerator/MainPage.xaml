@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
+             xmlns:extensionGenerator="clr-namespace:ExtensionGenerator"
              x:Class="ExtensionGenerator.MainPage">
 
     <ScrollView>
@@ -9,38 +9,49 @@
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0">
-                <VerticalStackLayout x:Name="top_info_area">
-                    <Label
-                        Text="Config File Generator V0.0.5 (pre-alpha)" 
-                        SemanticProperties.HeadingLevel="Level1"
-                        FontSize="32"
-                        HorizontalOptions="Center" />
-                    <Label
-                        Text="Compatibility target V2.3.3" 
-                        SemanticProperties.HeadingLevel="Level2"
-                        FontSize="24"
-                        HorizontalOptions="Center" />
-                    <Image
-                        Source="default_logo.png"
-                        SemanticProperties.Description="Example logo that's a clip-art website wireframe with a red diagonal slash marking it as the example icon"
-                        HeightRequest="200"
-                        WidthRequest="200"
-                        HorizontalOptions="Center"
-                        Aspect="Fill" />
-                </VerticalStackLayout>
-            
-                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Label Text="Enter your name: " VerticalOptions="Center" />
-                    <Entry Placeholder="Your name here" VerticalOptions="Center"  BackgroundColor="{StaticResource Primary}" />
-                </StackLayout>-->
-
-                <Button
-                    x:Name="CounterBtn"
-                    Text="Generate File"
-                    SemanticProperties.Hint="Counts the number of times you click"
-                    Clicked="OnCounterClicked"
+            <VerticalStackLayout x:Name="place_name_here">
+                <Label
+                    Text="Config File Generator V0.0.6 (pre-alpha)"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
                     HorizontalOptions="Center" />
+                <Label
+                    Text="Compatibility target V2.3.3"
+                    SemanticProperties.HeadingLevel="Level2"
+                    FontSize="24"
+                    HorizontalOptions="Center" />
+                <Image
+                    Source="default_logo.png"
+                    SemanticProperties.Description="Example logo that's a clip-art website wireframe with a red diagonal slash marking it as the example icon"
+                    HeightRequest="200"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"
+                    Aspect="Fill" />
+                <Label
+                    Text="Resources"
+                    SemanticProperties.HeadingLevel="Level3"
+                    FontSize="32"
+                    HorizontalOptions="Center" />
+                <Label
+                    Text="View on GitHub"
+                    SemanticProperties.HeadingLevel="Level3"
+                    FontSize="24"
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="click here"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" >
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}"
+                                              CommandParameter="https://learn.microsoft.com/dotnet/maui/" />
+                    </Label.GestureRecognizers>
+
+                </Label>
+            </VerticalStackLayout>
+
         </VerticalStackLayout>
+
     </ScrollView>
 
 </ContentPage>

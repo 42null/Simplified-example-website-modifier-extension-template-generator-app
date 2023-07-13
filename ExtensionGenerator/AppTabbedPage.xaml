@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:TabbedPageSample;assembly=ExtensionGenerator"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            xmlns:extensionGenerator="clr-namespace:ExtensionGenerator"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            x:Class="TabbedPageSample.AppTabbedPage">
+
+    <NavigationPage Title="Main" IconImageSource="{StaticResource TabOne}">
+        <x:Arguments>
+            <extensionGenerator:MainPage Title="projectConfiguration.json" />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="projectConfiguration.json" IconImageSource="{StaticResource TabTwo}">
+        <x:Arguments>
+            <extensionGenerator:JsonFileEditor>
+                <x:Arguments>
+                    <x:String>defaultsProjectConfiguration.json</x:String>
+                    <x:String>projectConfiguration.json</x:String>
+                </x:Arguments>
+            </extensionGenerator:JsonFileEditor>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="anotherTest.json" IconImageSource="{StaticResource TabThree}">
+        <x:Arguments>
+            <extensionGenerator:JsonFileEditor>
+                <x:Arguments>
+                    <x:String>defaults2.json</x:String>
+                    <x:String>anotherTest.json</x:String>
+                </x:Arguments>
+            </extensionGenerator:JsonFileEditor>
+        </x:Arguments>
+    </NavigationPage>
+
+</TabbedPage>
+
+
+<!-- <?xml version="1.0" encoding="UTF-8" ?> -->
+<!-- <Shell -->
+<!--     x:Class="ExtensionGenerator.AppTabbedPage" -->
+<!--     xmlns="http://schemas.microsoft.com/dotnet/2021/maui" -->
+<!--     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" -->
+<!--     xmlns:local="clr-namespace:ExtensionGenerator" -->
+<!--     Shell.FlyoutBehavior="Disabled"> -->
+<!-- -->
+
+
+<!--     <ShellContent -->
+<!--         Title="projectConfiguration.json file editor" -->
+<!--         ContentTemplate="{DataTemplate local:MainPage}" -->
+<!--         Route="MainPage" /> -->
+
+
+<!-- -->
+<!-- </Shell> -->
+<!-- -->

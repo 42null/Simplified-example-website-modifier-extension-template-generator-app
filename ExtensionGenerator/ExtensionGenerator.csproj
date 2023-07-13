@@ -53,6 +53,18 @@
 	  <None Remove="Resources\Images\info.svg" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="GeneratedExtensionFolder\" />
 	  <Folder Include="Resources\Images\icons\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="JsonFileEditor.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="JsonFileEditor.xaml.cs">
+	    <DependentUpon>JsonFileEditor.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 </Project>
