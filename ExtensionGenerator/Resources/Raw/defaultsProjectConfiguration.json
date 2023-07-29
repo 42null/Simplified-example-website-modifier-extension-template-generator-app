@@ -48,7 +48,7 @@
             {
               "name": "Image Alt",
               "value": "[Example Project's Icon]",
-              "description": "A description of your image that explains what it is if it fails to load",
+              "description": "A description of your image that eplains what it is if it fails to load",
               "placeHolder": "[Alt here]",
               "settingKey": "alt"
             }
@@ -73,27 +73,27 @@
               "specialType": "Color",
               "settingKey": "primary_dark"
             },{
-              "name": "Primary ",
+              "name": "Primary background (Light)",
               "value": "#e1e2e1",
               "specialType": "Color",
               "settingKey": "primary_light_background"
             },{
-              "name": "Primary ",
+              "name": "Primary foreground (Light)",
               "value": "#f5f5f6",
               "specialType": "Color",
               "settingKey": "primary_light_foreground"
             },{
-              "name": "Primary ",
+              "name": "Primary Text",
               "value": "#000000",
               "specialType": "Color",
               "settingKey": "primary_text"
             },{
-              "name": "Primary ",
+              "name": "Slider Background",
               "value": "#14d1d1",
               "specialType": "Color",
               "settingKey": "slider_background"
             },{
-              "name": "Primary ",
+              "name": "Slider Fill",
               "value": "#b6b6b7",
               "specialType": "Color",
               "settingKey": "slider_fill"

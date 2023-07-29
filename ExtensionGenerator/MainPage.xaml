@@ -11,7 +11,6 @@
             Padding="30,0">
             <VerticalStackLayout x:Name="place_name_here">
                 <Label
-                    Text="Config File Generator V0.0.6 (pre-alpha)"
                     SemanticProperties.HeadingLevel="Level1"
                     FontSize="32"
                     HorizontalOptions="Center" />
@@ -37,17 +36,22 @@
                     SemanticProperties.HeadingLevel="Level3"
                     FontSize="24"
                     HorizontalOptions="Center" />
-                <Label 
-                    Text="click here"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" >
-
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}"
-                                              CommandParameter="https://learn.microsoft.com/dotnet/maui/" />
-                    </Label.GestureRecognizers>
-
-                </Label>
+                <!-- <Label> -->
+                <!--     <Label.FormattedText> -->
+                <!--         <FormattedString> -->
+                <!--             <Span Text="Alternatively, click " /> -->
+                <!--             <Span Text="here" -->
+                <!--                   TextColor="Blue" -->
+                <!--                   TextDecorations="Underline"> -->
+                <!--                 <Span.GestureRecognizers> -->
+                <!--                     <TapGestureRecognizer Command="{Binding TapCommand}" -->
+                <!--                                           CommandParameter="https://learn.microsoft.com/dotnet/maui/" /> -->
+                <!--                 </Span.GestureRecognizers> -->
+                <!--             </Span> -->
+                <!--             <Span Text=" to view .NET MAUI documentation." /> -->
+                <!--         </FormattedString> -->
+                <!--     </Label.FormattedText> -->
+                <!-- </Label> -->
             </VerticalStackLayout>
 
         </VerticalStackLayout>

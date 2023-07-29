@@ -11,19 +11,44 @@
             Padding="30,0">
             <VerticalStackLayout x:Name="top_info_area">
                 <Label
-                    Text="Config File Generator V0.0.6 (pre-alpha)"
+                    Text="Config File Generator V0.0.7 (pre-alpha)"
                     SemanticProperties.HeadingLevel="Level1"
                     FontSize="32"
                     HorizontalOptions="Center" />
             </VerticalStackLayout>
-
-            <Button
-                x:Name="GeneratorButton"
-                Text="Save File"
-                SemanticProperties.Hint="Saves the page's settings for use later"
-                Clicked="OnGenerateButtonClicked"
-                HorizontalOptions="Center" />
-
+            
+            <HorizontalStackLayout
+                HorizontalOptions="Center">
+                <Button
+                    x:Name="GeneratorButton"
+                    Text="Save config"
+                    SemanticProperties.Hint="Saves the page's settings for use later"
+                    Clicked="OnGenerateButtonClicked"
+                    HorizontalOptions="Center"
+                    Margin="20" />
+                <Button
+                    x:Name="GeneratorImportButton"
+                    Text="Import from file"
+                    SemanticProperties.Hint="Opens load file dialog"
+                    Clicked="OnImportButtonClicked"
+                    HorizontalOptions="Center"
+                    Margin="20" />
+                <Button
+                    x:Name="GeneratorExportButton"
+                    Text="Export file"
+                    SemanticProperties.Hint="Opens save as dialog"
+                    Clicked="OnExportButtonClicked"
+                    HorizontalOptions="Center"
+                    Margin="20" />
+                <!-- <Button -->
+                <!--     x:Name="GeneratorClearButton" -->
+                <!--     Text="Clear entry's" -->
+                <!--     SemanticProperties.Hint="Clears entry text" -->
+                <!--     Clicked="OnExportButtonClicked" -->
+                <!--     HorizontalOptions="Center" -->
+                <!--     Margin="20" /> -->
+            </HorizontalStackLayout>
+            
         </VerticalStackLayout>
 
     </ScrollView>

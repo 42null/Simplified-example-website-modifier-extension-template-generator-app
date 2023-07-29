@@ -1,4 +1,10 @@
-﻿using CommunityToolkit.Maui.Storage;
+﻿using System.Net.Mime;
+using AppKit;
+using CloudKit;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Storage;
+using GameController;
 using TabbedPageSample;
 
 namespace ExtensionGenerator;
@@ -22,6 +28,7 @@ using System.Runtime.CompilerServices;
 using System.Text.Json.Nodes;
 using CoreVideo;
 using Microsoft.Maui.HotReload;
+using System.Drawing;
 
 public enum SpecialType
 {
@@ -100,6 +107,7 @@ public partial class JsonFileEditor : ContentPage
     private ColorInterpreter colorController = new ("Primary", "Secondary", "Tertiary");
     
     private JsonController jsonController;
+    private Layout jsonLayout;
     private readonly string JsonDefaultFilename = "error_defaults.json";
     private readonly string JsonSaveFilename = "error_save.json";
     
@@ -133,7 +141,7 @@ public partial class JsonFileEditor : ContentPage
     private async void InitializeAsync()
     {
         jsonController = new JsonController(JsonDefaultFilename, colorController);
-        Layout jsonLayout = await jsonController.GetStackFromFile();
+        jsonLayout = await jsonController.GetStackFromFile();
         topInfoArea.Children.Add(jsonLayout);
         
         
@@ -142,15 +150,13 @@ public partial class JsonFileEditor : ContentPage
 
 
 
-    public void OnGenerateButtonClicked(object sender, EventArgs e)
+    private void OnGenerateButtonClicked(object sender, EventArgs e)
     {
-        // count++;
-        //
-        // if (count == 1)
-        //     CounterBtn.Text = $"Clicked {count} time";
-        // else
-        //     CounterBtn.Text = $"Clicked {count} times";
+        Console.WriteLine("Attempting to save file");
+    }
     
+    private void OnExportButtonClicked(object sender, EventArgs e)
+    {
         // SemanticScreenReader.Announce(CounterBtn.Text);
 
         jsonController.GenerateJsonFromSettings();
@@ -162,34 +168,93 @@ public partial class JsonFileEditor : ContentPage
         {
             //TODO: Do something better with reporting the error
             Console.WriteLine("File location not accessible");
-        }
+        }        
+    }
+    
+    private async void OnImportButtonClicked(object sender, EventArgs e)
+    {
+        Console.WriteLine(":::: Import Clicked");
+
+        var fileResult = await FileManager.userPickFile(/*new ContentType("json")*/);//Code below does not run if option was canceled, even if null
+        if (fileResult == null) { return; }//Here just for just in case
+        Console.WriteLine("fileResult  = "+fileResult.FullPath);
+        Console.WriteLine("ContentType = "+fileResult.ContentType);
+        // if (fileResult.FileName == )
+        // {
+        //     
+        // }
+        
+        
+        
+        await using var stream = await FileSystem.OpenAppPackageFileAsync(fileResult.FullPath);
+        using var reader = new StreamReader(stream);
+        
+        var jsonAsStringContents = reader.ReadToEnd();
+        // Console.WriteLine("jsonAsStringContents = "+jsonAsStringContents);
+
+        JsonControllerGeneric jsonControllerGeneric = new JsonControllerGeneric(jsonAsStringContents);
+        GenericJsonObject fullGenericJsonObject = jsonControllerGeneric.GetGenericObject();
+
+        Layout layout = await jsonController.GetStackFromFile();
+        jsonController.TraverseLayoutReplace(fullGenericJsonObject, layout);
+        
+        
+        
+        // attemptToFillCurrentEditior(test);
+    }
+
+    private async void attemptToFillCurrentEditior(JsonControllerGeneric newObject)//TODO: Make save backup of old values
+    {
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+    public async Task<FileResult> PickJsonFile()
+    {
+        try
+        {
+            var options = new PickOptions
+            {
+                PickerTitle = "Please select a JSON file",
+                FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+                {
+                    { DevicePlatform.iOS, new[] { "public.json" } },
+                    { DevicePlatform.Android, new[] { "application/json" } },
+                    { DevicePlatform.WinUI, new[] { ".json" } },
+                    { DevicePlatform.Tizen, new[] { "application/json" } },
+                    { DevicePlatform.macOS, new[] { "json" } }
+                })
+            };
+
+            var result = await FilePicker.Default.PickAsync(options);
+            if (result != null)
+            {
+                if (result.FileName.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+                {
+                    using var stream = await result.OpenReadAsync();
+                    // Process the selected JSON file here
+                }
+            }
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            // The user canceled or something went wrong
+        }
+
+        return null;
+    }
+
+    
 }
-
-
-
-
-// public partial class MainPage : ContentPage
-// {
-// 	int count = 0;
-//
-// 	public MainPage()
-// 	{
-// 		InitializeComponent();
-// 	}
-//
-// 	private void OnCounterClicked(object sender, EventArgs e)
-// 	{
-// 		count++;
-//
-// 		if (count == 1)
-// 			CounterBtn.Text = $"Clicked {count} time";
-// 		else
-// 			CounterBtn.Text = $"Clicked {count} times";
-//
-// 		SemanticScreenReader.Announce(CounterBtn.Text);
-// 	}
-// }
-//

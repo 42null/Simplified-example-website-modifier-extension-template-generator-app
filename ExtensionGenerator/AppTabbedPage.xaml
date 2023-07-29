@@ -9,12 +9,12 @@
 
     <NavigationPage Title="Main" IconImageSource="{StaticResource TabOne}">
         <x:Arguments>
-            <extensionGenerator:MainPage Title="projectConfiguration.json" />
+            <extensionGenerator:MainPage Title="Welcome! :)" />
         </x:Arguments>
     </NavigationPage>
     <NavigationPage Title="projectConfiguration.json" IconImageSource="{StaticResource TabTwo}">
         <x:Arguments>
-            <extensionGenerator:JsonFileEditor>
+            <extensionGenerator:JsonFileEditor Title="Editing projectConfiguration.json">
                 <x:Arguments>
                     <x:String>defaultsProjectConfiguration.json</x:String>
                     <x:String>projectConfiguration.json</x:String>
@@ -24,7 +24,7 @@
     </NavigationPage>
     <NavigationPage Title="anotherTest.json" IconImageSource="{StaticResource TabThree}">
         <x:Arguments>
-            <extensionGenerator:JsonFileEditor>
+            <extensionGenerator:JsonFileEditor Title="Editing anotherTest.json">
                 <x:Arguments>
                     <x:String>defaults2.json</x:String>
                     <x:String>anotherTest.json</x:String>
