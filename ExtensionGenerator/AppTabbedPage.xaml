@@ -22,12 +22,12 @@
             </extensionGenerator:JsonFileEditor>
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="anotherTest.json" IconImageSource="{StaticResource TabThree}">
+    <NavigationPage Title="defaultsManifest.json" IconImageSource="{StaticResource TabThree}">
         <x:Arguments>
-            <extensionGenerator:JsonFileEditor Title="Editing anotherTest.json">
+            <extensionGenerator:JsonFileEditor Title="Editing manifest.json">
                 <x:Arguments>
-                    <x:String>defaults2.json</x:String>
-                    <x:String>anotherTest.json</x:String>
+                    <x:String>defaultsManifest.json</x:String>
+                    <x:String>manifest.json</x:String>
                 </x:Arguments>
             </extensionGenerator:JsonFileEditor>
         </x:Arguments>

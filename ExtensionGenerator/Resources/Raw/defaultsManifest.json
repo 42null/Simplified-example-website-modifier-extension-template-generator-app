@@ -1,0 +1,229 @@
+{
+  "header": "Settings",
+  "settingKey": "SECTOR-ALPHA",
+  "settings": [
+    {
+      "name": "Name of Your Extension",
+      "value": "Example Webextension",
+      "description": "This will be used as the name of your extension by the rest of the project",
+      "placeHolder": "A short name for your extension",
+      "settingKey": "name"
+    },
+    {
+      "name": "Version",
+      "value": "2.3.3",
+      "description": "The version of your extension",
+      "placeHolder": "Version number",
+      "settingKey": "version"
+    },
+    {
+      "name": "Author",
+      "value": "42null",
+      "description": "The author of the extension",
+      "placeHolder": "Author name",
+      "settingKey": "author"
+    },
+    {
+      "name": "Description",
+      "value": "An example extension",
+      "description": "A brief description of your extension",
+      "placeHolder": "Description",
+      "settingKey": "description"
+    },
+    {
+      "name": "Homepage URL",
+      "value": "https://github.com/42null/Return-YouTube-UI",
+      "description": "The URL of your extension's homepage",
+      "placeHolder": "URL",
+      "settingKey": "homepage_url"
+    }
+  ],
+  "childSectors": [
+    {
+      "header": "Browser Specific Settings",
+      "settingKey": "browser_specific_settings",
+      "childSectors": [
+        {
+          "header": "Gecko",
+          "settingKey": "gecko",
+          "settings": [
+            {
+              "name": "ID",
+              "value": "{020ca5d0-0cfd-4bd3-82d4-d85b240d3714}",
+              "description": "The ID of your extension for Gecko browsers",
+              "placeHolder": "Extension ID",
+              "settingKey": "id"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "header": "Permissions",
+      "settingKey": "permissions",
+      "settings": [
+        {
+          "name": "Storage",
+          "value": "[storage, scripting, tabs]",
+          "description": "Used to save extension preferences",
+          "placeHolder": "Permission",
+          "settingKey": "[0]"
+        }
+      ]
+    },
+    {
+      "header": "Host Permissions",
+      "settingKey": "host_permissions",
+      "settings": [
+        {
+          "name": "Host Patterns",
+          "value": "[*://*.example.com/, *://*.example.net/, *://*.example.org/, *://*.example.edu/]",
+          "description": "Host permission patterns",
+          "placeHolder": "Host patterns",
+          "settingKey": "matches"
+        }
+      ]
+    },
+    {
+      "header": "Background",
+      "settingKey": "background",
+      "settings": [
+        {
+          "name": "Scripts",
+          "value": "[background/background.js]",
+          "description": "Scripts used for the background page",
+          "placeHolder": "Scripts",
+          "settingKey": "scripts"
+        }
+      ]
+    },
+    {
+      "header": "Action",
+      "settingKey": "action",
+      "settings": [
+        {
+          "name": "Default Icon",
+          "value": "icons/logo.svg",
+          "description": "The default icon for the extension",
+          "placeHolder": "Icon path",
+          "settingKey": "default_icon"
+        },
+        {
+          "name": "Default Title",
+          "value": "Example Extension",
+          "description": "The default title for the extension",
+          "placeHolder": "Title",
+          "settingKey": "default_title"
+        },
+        {
+          "name": "Default Popup",
+          "value": "popup/popup.html",
+          "description": "The default popup HTML for the extension",
+          "placeHolder": "Popup path",
+          "settingKey": "default_popup"
+        },
+        {
+          "header": "Theme Icons",
+          "settingKey": "theme_icons",
+          "settings": [
+            {
+              "name": "Light",
+              "value": "icons/logo.svg",
+              "description": "The light theme icon for the extension",
+              "placeHolder": "Icon path",
+              "settingKey": "light"
+            },
+            {
+              "name": "Dark",
+              "value": "icons/logo.svg",
+              "description": "The dark theme icon for the extension",
+              "placeHolder": "Icon path",
+              "settingKey": "dark"
+            },
+            {
+              "name": "Size",
+              "value": "32",
+              "description": "The size of the theme icons for the extension",
+              "placeHolder": "Size",
+              "settingKey": "size"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "header": "Content Scripts",
+      "settingKey": "content_scripts",
+      "settings": [
+        {
+          "name": "Matches",
+          "value": "[*://*.example.com/, *://*.example.net/, *://*.example.org/, *://*.example.edu/]",
+          "description": "URL patterns where the content scripts should be injected",
+          "placeHolder": "URL patterns",
+          "settingKey": "matches"
+        },
+        {
+          "name": "JS",
+          "value": "[triggerSetup.js, injectionInjector.js]",
+          "description": "JavaScript files to be injected into matching pages",
+          "placeHolder": "JS files",
+          "settingKey": "js"
+        }
+      ]
+    },
+    {
+      "header": "Web Accessible Resources",
+      "settingKey": "web_accessible_resources",
+      "settings": [
+        {
+          "name": "Resources",
+          "value": "[injection_parts/helper_functions.js, global_helper_functions.js, injectionInjector.js, injection_parts/primary/*.css, injection_parts/extras/*.css, projectConfiguration.json, icons/*]",
+          "description": "List of resources accessible to web pages",
+          "placeHolder": "Resource paths",
+          "settingKey": "resources"
+        },
+        {
+          "name": "Matches",
+          "value": "[*://*.example.com/, *://*.example.net/, *://*.example.org/, *://*.example.edu/]",
+          "description": "URL patterns where the resources are accessible",
+          "placeHolder": "URL patterns",
+          "settingKey": "matches"
+        }
+      ]
+    },
+    {
+      "header": "Icons",
+      "settingKey": "icons",
+      "settings": [
+        {
+          "name": "16",
+          "value": "icons/logo.svg",
+          "description": "Icon path for size 16x16 pixels",
+          "placeHolder": "Icon path",
+          "settingKey": "16"
+        },
+        {
+          "name": "48",
+          "value": "icons/logo.svg",
+          "description": "Icon path for size 48x48 pixels",
+          "placeHolder": "Icon path",
+          "settingKey": "48"
+        },
+        {
+          "name": "128",
+          "value": "icons/logo.svg",
+          "description": "Icon path for size 128x128 pixels",
+          "placeHolder": "Icon path",
+          "settingKey": "128"
+        },
+        {
+          "name": "512",
+          "value": "icons/logo.svg",
+          "description": "Icon path for size 512x512 pixels",
+          "placeHolder": "Icon path",
+          "settingKey": "512"
+        }
+      ]
+    }
+  ]
+}
