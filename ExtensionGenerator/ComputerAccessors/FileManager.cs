@@ -21,7 +21,7 @@ public class FileManager
         }
     }
     
-    public static async Task<FileResult> userPickFile(/*ContentType fileTypeExtension*/)//TODO: Get working with filtering & w/message, make passable when
+    public static async Task<FileResult> userPickFile(ContentType fileTypeExtension)//TODO: Get working with filtering & w/message, make passable when
     {
         try
         {
@@ -38,20 +38,23 @@ public class FileManager
             var result = await FilePicker.Default.PickAsync();
             if (result != null)
             {
-                // if (result.ContentType.ToString() == fileTypeExtension.ToString())// Temp until getting select filters working
-                // {
-                //     await Toast.Make($"File selected").Show();
-                // }
-                // else
-                // {
-                //     await Toast.Make($"File selected was of wrong type, must be of type ."+fileTypeExtension.ToString()).Show();
-                // }
+                if (result.ContentType == fileTypeExtension.ToString().Substring("application/".Length))// Temp until getting select filters working
+                {
+                    // new ContentType("application/json")
+                    await Toast.Make($"Proper type file selected, processing...").Show();
+                }
+                else
+                {
+                    Console.WriteLine("~!!!!!!!!!!@@!@!!!");
+                    await Toast.Make($"File selected was of wrong type, must be of type \""+fileTypeExtension.ToString()+"\"").Show();
+                    return null;
+                }
             }
             return result;
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Exception occured when picking file. Message: "+ex.Message);
+            Console.WriteLine("Exception occurred when picking file. Message: "+ex.Message);
         }
         return null;
     }

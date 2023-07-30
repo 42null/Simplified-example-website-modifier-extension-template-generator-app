@@ -48,7 +48,7 @@
             {
               "name": "Image Alt",
               "value": "[Example Project's Icon]",
-              "description": "A description of your image that eplains what it is if it fails to load",
+              "description": "A description of your image that explains what it is if it fails to load",
               "placeHolder": "[Alt here]",
               "settingKey": "alt"
             }

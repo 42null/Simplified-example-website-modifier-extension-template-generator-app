@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:extensionGenerator="clr-namespace:ExtensionGenerator"
              x:Class="ExtensionGenerator.MainPage">
-
-    <ScrollView>
+<ScrollView>
         <!--VerticalOptions="Center">-->
         <VerticalStackLayout
             Spacing="25"

@@ -268,7 +268,7 @@ public class JsonController
                     Placeholder = setting.PlaceHolder,
                     VerticalOptions = LayoutOptions.Center,
                     WidthRequest = SETTINGS_WIDTH_ENTRY,
-                    BackgroundColor = colorController.GetPrimary(),
+                    // BackgroundColor = colorController.GetPrimary(),
                     Margin = SETTINGS_SPACEING,
                     AutomationId = setting.SettingKey
                 };

@@ -1,0 +1,36 @@
+{
+  "extension_display_name": "a",
+  "log_header": "b",
+  "log_header_internal": "c",
+  "popup_page": {
+    "main": {
+      "title": "d",
+      "src": "e",
+      "alt": "f"
+    },
+    "colors": {
+      "primary": "g",
+      "primary_light": "h",
+      "primary_dark": "i",
+      "primary_light_background": "j",
+      "primary_light_foreground": "k",
+      "primary_text": "l",
+      "slider_background": "m",
+      "slider_fill": "n"
+    },
+    "link_sites": {
+      "link_sites_header": "o",
+      "popup_page_footer_bottommost_message": "p",
+      "github": {
+        "name": "q",
+        "icon_url": "r",
+        "link_url": "s"
+      },
+      "firefox": {
+        "name": "t",
+        "icon_url": "u",
+        "link_url": "v"
+      }
+    }
+  }
+}

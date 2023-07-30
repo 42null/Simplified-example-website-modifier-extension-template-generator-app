@@ -4,8 +4,10 @@ using CloudKit;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Storage;
+using ExtensionGenerator.Popups;
 using GameController;
 using TabbedPageSample;
+using IPopup = ExtensionGenerator.Popups.IPopup;
 
 namespace ExtensionGenerator;
 
@@ -173,22 +175,29 @@ public partial class JsonFileEditor : ContentPage
     
     private async void OnImportButtonClicked(object sender, EventArgs e)
     {
-        Console.WriteLine(":::: Import Clicked");
+        Console.WriteLine("[Button CLick]: Import Button Clicked ");
 
-        var fileResult = await FileManager.userPickFile(/*new ContentType("json")*/);//Code below does not run if option was canceled, even if null
-        if (fileResult == null) { return; }//Here just for just in case
-        Console.WriteLine("fileResult  = "+fileResult.FullPath);
-        Console.WriteLine("ContentType = "+fileResult.ContentType);
-        // if (fileResult.FileName == )
-        // {
-        //     
-        // }
-        
-        
-        
+        var fileResult = await FileManager.userPickFile(new ContentType("application/json")); //Code below does not run if option was canceled, even if null
+        if (fileResult == null)
+        {
+            return;
+        } //Here just for just in case
+
+        Console.WriteLine("fileResult  = " + fileResult.FullPath);
+        if (fileResult.FileName != JsonDefaultFilename) // If selected filename differs from tab page editor json filename 
+        {
+            IPopup confirmDifferentFileName = new PopupSimpleOkConfirm(
+                $"Imported file name \"{fileResult.FileName}\" differs from current name \"{fileResult.FileName}\". Fields will be overriden and may not match the old file.",
+                "import with different name");
+            if (!await confirmDifferentFileName.DisplayToUser()) // If the user decides to cancel 
+            {
+                return;
+            }
+        }
+
         await using var stream = await FileSystem.OpenAppPackageFileAsync(fileResult.FullPath);
         using var reader = new StreamReader(stream);
-        
+
         var jsonAsStringContents = reader.ReadToEnd();
         // Console.WriteLine("jsonAsStringContents = "+jsonAsStringContents);
 
@@ -197,10 +206,9 @@ public partial class JsonFileEditor : ContentPage
 
         Layout layout = await jsonController.GetStackFromFile();
         jsonController.TraverseLayoutReplace(fullGenericJsonObject, layout);
+
         
-        
-        
-        // attemptToFillCurrentEditior(test);
+        // attemptToFillCurrentEditor(test);
     }
 
     private async void attemptToFillCurrentEditior(JsonControllerGeneric newObject)//TODO: Make save backup of old values
