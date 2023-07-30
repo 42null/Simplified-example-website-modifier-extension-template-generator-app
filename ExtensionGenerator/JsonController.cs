@@ -70,7 +70,7 @@ public class JsonController
         Func<Layout, JsonNode?> traverse = traverseLayout;
         
         lastTransversedBuiltSettings = (JsonObject) traverse(StackLayout);
-        Console.WriteLine("result = "+lastTransversedBuiltSettings.ToJsonString());
+        // Console.WriteLine("result = "+lastTransversedBuiltSettings.ToJsonString());
 
         // string json = result.ToString();
         // FileManager.SaveFile(fileName, json, CancellationToken.None);

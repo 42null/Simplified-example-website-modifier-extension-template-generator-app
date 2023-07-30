@@ -139,6 +139,14 @@ public partial class JsonFileEditor : ContentPage
         InitializeAsync();
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        if (GeneratorButton.Parent is HorizontalStackLayout footer)
+        {
+            footer.BackgroundColor = Colors.Transparent;//Does not work
+        }
+    }
 
     private async void InitializeAsync()
     {
@@ -187,7 +195,7 @@ public partial class JsonFileEditor : ContentPage
         if (fileResult.FileName != JsonDefaultFilename) // If selected filename differs from tab page editor json filename 
         {
             IPopup confirmDifferentFileName = new PopupSimpleOkConfirm(
-                $"Imported file name \"{fileResult.FileName}\" differs from current name \"{fileResult.FileName}\". Fields will be overriden and may not match the old file.",
+                $"Imported file name \"{fileResult.FileName}\" differs from current name \"{JsonDefaultFilename}\". Fields will be overriden and may not match the old file.",
                 "import with different name");
             if (!await confirmDifferentFileName.DisplayToUser()) // If the user decides to cancel 
             {

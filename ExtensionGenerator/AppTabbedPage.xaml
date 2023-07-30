@@ -22,7 +22,7 @@
             </extensionGenerator:JsonFileEditor>
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="defaultsManifest.json" IconImageSource="{StaticResource TabThree}">
+    <NavigationPage Title="manifest.json" IconImageSource="{StaticResource TabThree}">
         <x:Arguments>
             <extensionGenerator:JsonFileEditor Title="Editing manifest.json">
                 <x:Arguments>

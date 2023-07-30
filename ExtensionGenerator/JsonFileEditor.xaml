@@ -3,54 +3,71 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:extensionGenerator="clr-namespace:ExtensionGenerator"
              x:Class="ExtensionGenerator.JsonFileEditor">
+    
+    <ContentPage.Resources>
+        <!-- Define the custom style for the footer -->
+        <Style x:Key="FooterStyle" TargetType="HorizontalStackLayout">
+            <Setter Property="BackgroundColor" Value="Transparent" /> <!-- Does not work -->
+        </Style>
+    </ContentPage.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- The first row will take the remaining available space (scrollable content) -->
+            <RowDefinition Height="*" />
+            <!-- The second row will be fixed height for the footer -->
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-    <ScrollView>
-        <!--VerticalOptions="Center">-->
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0">
-            <VerticalStackLayout x:Name="top_info_area">
-                <Label
-                    Text="Config File Generator V0.0.9 (pre-alpha)"
-                    SemanticProperties.HeadingLevel="Level1"
-                    FontSize="32"
-                    HorizontalOptions="Center" />
+        <!-- Scrollable -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0">
+                <VerticalStackLayout x:Name="top_info_area">
+                    <Label
+                        Text="Config File Generator V0.0.10 (pre-alpha)"
+                        SemanticProperties.HeadingLevel="Level1"
+                        FontSize="32"
+                        HorizontalOptions="Center" />
+                </VerticalStackLayout>
+                
             </VerticalStackLayout>
-            
-            <HorizontalStackLayout
-                HorizontalOptions="Center">
-                <Button
-                    x:Name="GeneratorButton"
-                    Text="Save config"
-                    SemanticProperties.Hint="Saves the page's settings for use later"
-                    Clicked="OnGenerateButtonClicked"
-                    HorizontalOptions="Center"
-                    Margin="20" />
-                <Button
-                    x:Name="GeneratorImportButton"
-                    Text="Import from file"
-                    SemanticProperties.Hint="Opens load file dialog"
-                    Clicked="OnImportButtonClicked"
-                    HorizontalOptions="Center"
-                    Margin="20" />
-                <Button
-                    x:Name="GeneratorExportButton"
-                    Text="Export file"
-                    SemanticProperties.Hint="Opens save as dialog"
-                    Clicked="OnExportButtonClicked"
-                    HorizontalOptions="Center"
-                    Margin="20" />
-                <!-- <Button -->
-                <!--     x:Name="GeneratorClearButton" -->
-                <!--     Text="Clear entry's" -->
-                <!--     SemanticProperties.Hint="Clears entry text" -->
-                <!--     Clicked="OnExportButtonClicked" -->
-                <!--     HorizontalOptions="Center" -->
-                <!--     Margin="20" /> -->
-            </HorizontalStackLayout>
-            
-        </VerticalStackLayout>
+        </ScrollView>
 
-    </ScrollView>
+        <!-- Footer -->
+        <HorizontalStackLayout Grid.Row="1"
+                               Style="{StaticResource FooterStyle}"
+                               HorizontalOptions="Center">
+            <Button
+                x:Name="GeneratorButton"
+                Text="Save config"
+                SemanticProperties.Hint="Saves the page's settings for use later"
+                Clicked="OnGenerateButtonClicked"
+                HorizontalOptions="Center"
+                Margin="20" />
+            <Button
+                x:Name="GeneratorImportButton"
+                Text="Import from file"
+                SemanticProperties.Hint="Opens load file dialog"
+                Clicked="OnImportButtonClicked"
+                HorizontalOptions="Center"
+                Margin="20" />
+            <Button
+                x:Name="GeneratorExportButton"
+                Text="Export file"
+                SemanticProperties.Hint="Opens save as dialog"
+                Clicked="OnExportButtonClicked"
+                HorizontalOptions="Center"
+                Margin="20" />
+            <!-- <Button -->
+            <!--     x:Name="GeneratorClearButton" -->
+            <!--     Text="Clear entry's" -->
+            <!--     SemanticProperties.Hint="Clears entry text" -->
+            <!--     Clicked="OnExportButtonClicked" -->
+            <!--     HorizontalOptions="Center" -->
+            <!--     Margin="20" /> -->
+        </HorizontalStackLayout>
+    </Grid>
 
 </ContentPage>

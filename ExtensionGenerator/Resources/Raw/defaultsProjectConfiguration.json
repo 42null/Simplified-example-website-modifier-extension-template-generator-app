@@ -141,7 +141,7 @@
                   "placeHolder": "https://...",
                   "settingKey": "link_url"
                 }
-              ] 
+              ]
             },{
               "header": "Location (#2)",
               "settingKey": "firefox",
