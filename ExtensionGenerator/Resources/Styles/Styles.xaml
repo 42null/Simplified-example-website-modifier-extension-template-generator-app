@@ -9,7 +9,7 @@
                FontFamily="FontAwesome"
                Size="22"
                Color="{StaticResource Primary}"
-               Glyph="{x:Static local:IconFont.DiceOne}"/>
+               Glyph="{x:Static local:IconFont.File}"/>
     <FontImage x:Key="TabTwo"
                FontFamily="FontAwesome"
                Size="22"

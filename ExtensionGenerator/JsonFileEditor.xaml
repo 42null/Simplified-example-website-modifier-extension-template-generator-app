@@ -26,7 +26,7 @@
                 Padding="30,0">
                 <VerticalStackLayout x:Name="top_info_area">
                     <Label
-                        Text="Config File Generator V0.0.10 (pre-alpha)"
+                        Text="Config File Generator V0.0.11 (pre-alpha)"
                         SemanticProperties.HeadingLevel="Level1"
                         FontSize="32"
                         HorizontalOptions="Center" />

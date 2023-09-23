@@ -30,27 +30,63 @@
                     SemanticProperties.HeadingLevel="Level3"
                     FontSize="32"
                     HorizontalOptions="Center" />
-                <Label
+                <Label 
                     Text="View on GitHub"
+                    SemanticProperties.HeadingLevel="Level4"
+                    FontSize="28"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" >
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}"
+                                              CommandParameter="https://github.com/42null/Simplified-example-website-modifier-extension-template-generator-app" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Text="See example projects"
                     SemanticProperties.HeadingLevel="Level3"
                     FontSize="24"
                     HorizontalOptions="Center" />
+                
+                <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center">
+                    <Button
+                        x:Name="PullFullButton"
+                        Text="Pull Most Recent Configuration"
+                        SemanticProperties.Hint="Generates "
+                        Clicked="OnPullFullButtonClicked"
+                        HorizontalOptions="Center"
+                        Margin="20" />
+                    <Button
+                        x:Name="GenerateFullButton"
+                        Text="Generate Project Folder From Editor Files"
+                        SemanticProperties.Hint="Generates a folder from the saved editor files"
+                        Clicked="OnGenerateFullButtonClicked"
+                        HorizontalOptions="Center"
+                        Margin="20" />
+                </HorizontalStackLayout>
+                
+                <Button
+                    x:Name="CheckForUpdates"
+                    Text="Check For Updates"
+                    SemanticProperties.Hint="Checks the project git page for a newer version"
+                    Clicked="OnCheckForUpdatesButtonClicked"
+                    HorizontalOptions="Center"
+                    Margin="20" />
+
+                
+                
                 <!-- <Label> -->
                 <!--     <Label.FormattedText> -->
                 <!--         <FormattedString> -->
                 <!--             <Span Text="Alternatively, click " /> -->
-                <!--             <Span Text="here" -->
-                <!--                   TextColor="Blue" -->
-                <!--                   TextDecorations="Underline"> -->
-                <!--                 <Span.GestureRecognizers> -->
-                <!--                     <TapGestureRecognizer Command="{Binding TapCommand}" -->
-                <!--                                           CommandParameter="https://learn.microsoft.com/dotnet/maui/" /> -->
-                <!--                 </Span.GestureRecognizers> -->
-                <!--             </Span> -->
-                <!--             <Span Text=" to view .NET MAUI documentation." /> -->
+                <!--             <extensionGenerator:HyperlinkSpan Text="here" -->
+                <!--                                  Url="https://learn.microsoft.com/dotnet/" /> -->
+                <!--             <Span Text=" to view .NET documentation." /> -->
                 <!--         </FormattedString> -->
                 <!--     </Label.FormattedText> -->
                 <!-- </Label> -->
+
+                
             </VerticalStackLayout>
 
         </VerticalStackLayout>
