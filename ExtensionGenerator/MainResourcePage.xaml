@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:extensionGenerator="clr-namespace:ExtensionGenerator"
-             x:Class="ExtensionGenerator.JsonFileEditor">
+             x:Class="ExtensionGenerator.MainResourcePage">
     
     <ContentPage.Resources>
         <!-- Define the custom style for the footer -->
@@ -19,6 +19,10 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+
+        
+        
+        
         <!-- Scrollable -->
         <ScrollView Grid.Row="0">
             <VerticalStackLayout
@@ -26,10 +30,23 @@
                 Padding="30,0">
                 <VerticalStackLayout x:Name="top_info_area">
                     <Label
-                        Text="Config File Generator (pre-alpha)"
+                        Text="Resource Input Page"
                         SemanticProperties.HeadingLevel="Level1"
                         FontSize="32"
                         HorizontalOptions="Center" />
+                    <Label
+                        Text="Add the resources you will be using for your extension here, so they can be easily selected elsewhere."
+                        SemanticProperties.HeadingLevel="Level2"
+                        FontSize="24"
+                        HorizontalOptions="Center" />
+                    
+                    <Button
+                        x:Name="GeneratorButton"
+                        Text="Add icon"
+                        SemanticProperties.Hint="Opens file picker to select image file resource for later."
+                        Clicked="OnAddImageFilePathToMainResourcesPicker"
+                        HorizontalOptions="Center"
+                        Margin="20" />
                 </VerticalStackLayout>
                 
             </VerticalStackLayout>
@@ -39,34 +56,6 @@
         <HorizontalStackLayout Grid.Row="1"
                                Style="{StaticResource FooterStyle}"
                                HorizontalOptions="Center">
-            <Button
-                x:Name="GeneratorButton"
-                Text="Save config"
-                SemanticProperties.Hint="Saves the page's settings for use later"
-                Clicked="OnGenerateButtonClicked"
-                HorizontalOptions="Center"
-                Margin="20" />
-            <Button
-                x:Name="GeneratorImportButton"
-                Text="Import from file"
-                SemanticProperties.Hint="Opens load file dialog"
-                Clicked="OnImportButtonClicked"
-                HorizontalOptions="Center"
-                Margin="20" />
-            <Button
-                x:Name="GeneratorExportButton"
-                Text="Export file"
-                SemanticProperties.Hint="Opens save as dialog"
-                Clicked="OnExportButtonClicked"
-                HorizontalOptions="Center"
-                Margin="20" />
-            <!-- <Button -->
-            <!--     x:Name="GeneratorClearButton" -->
-            <!--     Text="Clear entry's" -->
-            <!--     SemanticProperties.Hint="Clears entry text" -->
-            <!--     Clicked="OnExportButtonClicked" -->
-            <!--     HorizontalOptions="Center" -->
-            <!--     Margin="20" /> -->
         </HorizontalStackLayout>
     </Grid>
 

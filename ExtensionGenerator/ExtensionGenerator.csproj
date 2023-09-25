@@ -65,10 +65,17 @@
 	  <MauiXaml Update="JsonFileEditor.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="MainResourcePage.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="JsonFileEditor.xaml.cs">
 	    <DependentUpon>JsonFileEditor.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="MainResourcePage.xaml.cs">
+	    <DependentUpon>MainResourcePage.xaml</DependentUpon>
 	    <SubType>Code</SubType>
 	  </Compile>
 	</ItemGroup>

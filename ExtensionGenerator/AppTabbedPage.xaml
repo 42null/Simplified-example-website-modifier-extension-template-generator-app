@@ -11,7 +11,14 @@
             <extensionGenerator:MainPage Title="Welcome! :)" />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="projectConfiguration.json" IconImageSource="{StaticResource TabTwo}">
+    
+    <NavigationPage Title="Resource helper" IconImageSource="{StaticResource TabTwo}">
+        <x:Arguments>
+            <extensionGenerator:MainResourcePage Title="Extension's Resources" />
+        </x:Arguments>
+    </NavigationPage>
+    
+    <NavigationPage Title="projectConfiguration.json" IconImageSource="{StaticResource TabThree}">
         <x:Arguments>
             <extensionGenerator:JsonFileEditor Title="Editing projectConfiguration.json">
                 <x:Arguments>
@@ -21,7 +28,8 @@
             </extensionGenerator:JsonFileEditor>
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="manifest.json" IconImageSource="{StaticResource TabThree}">
+    
+    <NavigationPage Title="manifest.json" IconImageSource="{StaticResource TabFour}">
         <x:Arguments>
             <extensionGenerator:JsonFileEditor Title="Editing manifest.json">
                 <x:Arguments>

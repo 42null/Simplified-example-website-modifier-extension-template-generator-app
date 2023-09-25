@@ -1,11 +1,6 @@
 ﻿using System.Net.Mime;
-using AppKit;
-using CloudKit;
-using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Storage;
 using ExtensionGenerator.Popups;
-using GameController;
 using TabbedPageSample;
 using IPopup = ExtensionGenerator.Popups.IPopup;
 
@@ -13,24 +8,14 @@ namespace ExtensionGenerator;
 
 
 using System;
-using System.Text.Json;
 using Microsoft.Maui;
-using static System.Net.Mime.MediaTypeNames;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Xaml;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.Maui.Storage;
 using Microsoft.Maui.Graphics;
-using Microsoft.Maui.Accessibility;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Text.Json.Nodes;
-using CoreVideo;
-using Microsoft.Maui.HotReload;
-using System.Drawing;
 
 public enum SpecialType
 {
@@ -87,9 +72,9 @@ public class Setting
             Description = "Use a 3 or 6 digit hexcode color value";
             PlaceHolder = "#ffffff";
         }
-        else
+        else if(SpecialType == SpecialType.Image)
         {
-            SpecialType = SpecialType.Image;
+            
         }
     }
 }
@@ -191,7 +176,6 @@ public partial class JsonFileEditor : ContentPage
             return;
         } //Here just for just in case
 
-        Console.WriteLine("fileResult  = " + fileResult.FullPath);
         if (fileResult.FileName != JsonDefaultFilename) // If selected filename differs from tab page editor json filename 
         {
             IPopup confirmDifferentFileName = new PopupSimpleOkConfirm(

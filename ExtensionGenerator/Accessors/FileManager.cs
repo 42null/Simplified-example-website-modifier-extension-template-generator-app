@@ -38,14 +38,16 @@ public class FileManager
             var result = await FilePicker.Default.PickAsync();
             if (result != null)
             {
-                if (result.ContentType == fileTypeExtension.ToString().Substring("application/".Length))// Temp until getting select filters working
-                {
-                    // new ContentType("application/json")
-                    await Toast.Make($"Proper type file selected, processing...").Show();
-                }
-                else
-                {
-                    Console.WriteLine("~!!!!!!!!!!@@!@!!!");
+                string withoutApplicationPartStr = fileTypeExtension.ToString().Substring("application/".Length);
+                if (result.ContentType == withoutApplicationPartStr){// Temp until getting select filters working
+                    
+                    await Toast.Make($"Proper file type selected, processing...").Show();
+                }else if(fileTypeExtension.Equals(new ContentType("application/image"))){//TODO: Restructure to use recursively or better option
+                    if (withoutApplicationPartStr is "ico" or "svg" or "png" or "jpg" or "jpeg")
+                    {
+                        await Toast.Make($"Proper file type selected (image), processing...").Show();
+                    }
+                }else{
                     await Toast.Make($"File selected was of wrong type, must be of type \""+fileTypeExtension.ToString()+"\"").Show();
                     return null;
                 }
