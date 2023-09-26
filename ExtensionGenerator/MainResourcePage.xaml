@@ -47,6 +47,10 @@
                         Clicked="OnAddImageFilePathToMainResourcesPicker"
                         HorizontalOptions="Center"
                         Margin="20" />
+                    
+                    <VerticalStackLayout x:Name="display_saved_resources_area">
+                    </VerticalStackLayout>
+                    
                 </VerticalStackLayout>
                 
             </VerticalStackLayout>

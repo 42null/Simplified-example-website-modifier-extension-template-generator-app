@@ -11,25 +11,87 @@ using System.IO;
 public partial class MainResourcePage : ContentPage
 {
     private readonly int ICON_WIDTH = 15;
-    private readonly int SECTOR_HEADER_FONT_SIZE = 22;
+    private readonly int RESOURCE_FILENAME_FONT_SIZE = 32;
+    private readonly int RESOURCE_FULL_PATH_FONT_SIZE = 24;
     
+    Layout topInfoArea;
+    Layout savedResourcesDisplayArea;
+    
+
     private DropGestureRecognizer DropGestureRecognizer { get; set; }
     
     private List<string> imageFilePaths = new List<string>();
     
     
     // Color Themes
-    // private ColorInterpreter colorController = new ("Primary", "Secondary", "Tertiary");
+    private ColorInterpreter colorController = new ("Primary", "Secondary", "Tertiary");
     
     public MainResourcePage()
     {
-        imageFilePaths = PreferencesManager.GetStringArray(PreferencesManager.STORED_PREFRENCES_IMAGE_PATHS_HELPER_KEY).ToList();
-        foreach (var imageFilePath in imageFilePaths)
-        {
-            Console.WriteLine("!!!"+imageFilePath);
-        }
         InitializeComponent();
         InitializeAsync();
+        
+        display_saved_resources_area = (VerticalStackLayout)FindByName("display_saved_resources_area");
+
+        
+        imageFilePaths = PreferencesManager.GetStringArray(PreferencesManager.STORED_PREFRENCES_IMAGE_PATHS_HELPER_KEY).ToList();
+        
+        foreach (var imageFilePath in imageFilePaths)
+        {
+            if (imageFilePath != "")
+            {
+                Console.WriteLine(imageFilePath);
+                
+
+                StackLayout resourceDisplay = new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal,
+                    VerticalOptions = LayoutOptions.Center,
+                    Background = Colors.Aqua,//TODO: MAKE USE PROGRAMMATIC VALUES!
+                    
+                    // Margin = new Thickness(0,20,110,20) //TODO: Make programmatic once icon size is working
+                    Margin = new Thickness(110,20,0,20), //TODO: Make programmatic once icon size is working
+                    AutomationId = imageFilePath.GetHashCode().ToString()
+                };
+                Image resourceImage = new Image
+                {
+                    Source = imageFilePath
+                };
+                //TODO: !!!!!!!!!!! Make multi-platform character switch. HIGH PRIORITY
+                string fileName = imageFilePath.Substring(imageFilePath.LastIndexOf("/")+1);
+                Label fileNameHeader = new Label
+                {
+                    Text = fileName,
+                    TextColor = Colors.Black,
+                    VerticalOptions = LayoutOptions.Start,
+                    FontSize = RESOURCE_FILENAME_FONT_SIZE,
+
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    
+                    // WidthRequest = SETTINGS_WIDTH_LABEL,
+                };
+                Label fileNameFullPath = new Label
+                {
+                    Text = imageFilePath,
+                    TextColor = Colors.Gray,
+                    VerticalOptions = LayoutOptions.Start,
+                    FontSize = RESOURCE_FULL_PATH_FONT_SIZE,
+
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    
+                    // WidthRequest = SETTINGS_WIDTH_LABEL,
+                };
+                resourceDisplay.Children.Add(resourceImage);
+                resourceDisplay.Children.Add(fileNameHeader);
+                resourceDisplay.Children.Add(fileNameFullPath);
+                
+                
+                display_saved_resources_area.Children.Add(resourceDisplay);
+
+
+                // savedResourcesDisplayArea.Children.Add(resourceDisplay);
+            }
+        }
     }
     
 
