@@ -13,7 +13,8 @@
     <Color x:Key="Primary">#2692BB</Color>
     <Color x:Key="Secondary">#6DEEF1</Color>
     <Color x:Key="Tertiary">#1A3557</Color>
-    <Color x:Key="Red">red</Color>
+    <Color x:Key="Positive">#F080FF80</Color>
+    <Color x:Key="Negative">#FFF08080</Color>
     <!-- #1A3557 -->
     <!-- #225D87 -->
     <!-- #2692BB -->

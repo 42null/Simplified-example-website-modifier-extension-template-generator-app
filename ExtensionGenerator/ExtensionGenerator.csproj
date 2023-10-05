@@ -59,7 +59,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="GeneratedExtensionFolder\" />
-	  <Folder Include="Resources\Images\icons\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="JsonFileEditor.xaml">

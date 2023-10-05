@@ -12,7 +12,7 @@
         </x:Arguments>
     </NavigationPage>
     
-    <NavigationPage Title="Resource helper" IconImageSource="{StaticResource TabTwo}">
+    <NavigationPage Title="Resource Helper" IconImageSource="{StaticResource TabTwo}">
         <x:Arguments>
             <extensionGenerator:MainResourcePage Title="Extension's Resources" />
         </x:Arguments>

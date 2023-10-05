@@ -12,12 +12,25 @@ public class PreferencesManager//TODO: Make use singleton structure
         return listAsStringRaw.Split(DELIMETER_1);
     }
     
+    //TODO: Check if key holds values of same generic
     public static bool SaveStringArray(string key, string[] storeValues)
     {
         bool keyAlreadyExisted = Preferences.Default.ContainsKey(key);
         string singleStr = storeValues.Aggregate((result, next) => $"{result}{DELIMETER_1}{next}");
+        if (singleStr.Substring(0, 1) == $"{DELIMETER_1}")
+        {
+            singleStr = singleStr.Substring(1);
+        }
         Preferences.Default.Set(key, singleStr);
-        Console.WriteLine("singleStr = +"+singleStr);
         return keyAlreadyExisted;
     }
+
+    // public static bool RemoveFromStringArray(string key, string storedValues)
+    // {
+    //     bool keyAlreadyExisted = Preferences.Default.ContainsKey(key);
+    //     string singleStr = storeValues.Aggregate((result, next) => $"{result}{DELIMETER_1}{next}");
+    //     Preferences.Default.Set(key, singleStr);
+    //     Console.WriteLine("singleStr = +"+singleStr);
+    //     return keyAlreadyExisted;
+    // }
 }

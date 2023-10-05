@@ -91,7 +91,7 @@ public partial class JsonFileEditor : ContentPage
     private readonly int SECTOR_HEADER_FONT_SIZE = 22;
     
     // Color Themes
-    private ColorInterpreter colorController = new ("Primary", "Secondary", "Tertiary");
+    private ColorInterpreter colorController = new ("Primary", "Secondary", "Tertiary", "Positive", "Negative");
     
     private JsonController jsonController;
     private Layout jsonLayout;

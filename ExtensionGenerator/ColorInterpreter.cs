@@ -1,14 +1,17 @@
 namespace ExtensionGenerator;
 public class ColorInterpreter //TODO: Rename to ColorController?
 {
-    private Color primary, secondary, tertiary;
+    private Color primary, secondary, tertiary, positive, negative;
 
-    // Make take different sizes and construct based on what isn't provided. Right now set only to 3 values  
-    public ColorInterpreter(String primaryName, String secondaryName, String tertiaryName)
+    // Make take different sizes and construct based on what isn't provided. Right now set only to all values  
+    public ColorInterpreter(string primaryName, string secondaryName, string tertiaryName, string positiveName, string negativeName)
     {
         primary   = getStylesColor(primaryName);
         secondary = getStylesColor(secondaryName);
         tertiary  = getStylesColor(tertiaryName);
+        
+        positive  = getStylesColor(positiveName);
+        negative  = getStylesColor(negativeName);
     }
 
     private Color getStylesColor(String colorName)
@@ -38,5 +41,14 @@ public class ColorInterpreter //TODO: Rename to ColorController?
     public Color GetTertiary()
     {
         return tertiary;
+    }
+
+    public Color GetPositive()
+    {
+        return positive;
+    }
+    public Color GetNegative()
+    {
+        return negative;
     }
 }

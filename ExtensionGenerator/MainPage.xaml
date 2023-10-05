@@ -42,11 +42,18 @@
                                               CommandParameter="https://github.com/42null/Simplified-example-website-modifier-extension-template-generator-app" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label
-                    Text="See example projects"
-                    SemanticProperties.HeadingLevel="Level3"
+                <Label 
+                    Text="See example project"
+                    SemanticProperties.HeadingLevel="Level4"
                     FontSize="24"
-                    HorizontalOptions="Center" />
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" >
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}"
+                                              CommandParameter="https://addons.mozilla.org/en-US/firefox/addon/return-youtube-ui/" />
+                    </Label.GestureRecognizers>
+                </Label>
                 
                 <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center">
                     <Button
@@ -73,7 +80,12 @@
                     HorizontalOptions="Center"
                     Margin="20" />
 
-                
+                <Label
+                    Text="Notice: Development has been done with with the dark-mode colors version of this app. Currently using with dark mode is recommended as the light-mode version has not yet been ironed out."
+                    SemanticProperties.HeadingLevel="Level4"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    FontAttributes="Italic" />
                 
                 <!-- <Label> -->
                 <!--     <Label.FormattedText> -->
