@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Net.Mime;
 using System.Runtime.InteropServices.ComTypes;
+using CommunityToolkit.Maui.Alerts;
 
 namespace ExtensionGenerator;
 
@@ -65,9 +66,17 @@ public partial class MainResourcePage : ContentPage
         } //Here just for just in case
 
         Console.WriteLine("fileResult = " + fileResult.FullPath);
-        imageFilePaths.Add(fileResult.FullPath);
-        addResourceBarsToPage(new List<string>(){fileResult.FullPath});
-        PreferencesManager.SaveStringArray(PreferencesManager.STORED_PREFRENCES_IMAGE_PATHS_HELPER_KEY, imageFilePaths.ToArray());
+        if (PreferencesManager.CheckPreferencesArray<string>(PreferencesManager.STORED_PREFRENCES_IMAGE_PATHS_HELPER_KEY, new string[1]{fileResult.FullPath}).Length == 0)
+        {
+            imageFilePaths.Add(fileResult.FullPath);
+            addResourceBarsToPage(new List<string>(){fileResult.FullPath});
+            PreferencesManager.SaveStringArray(PreferencesManager.STORED_PREFRENCES_IMAGE_PATHS_HELPER_KEY, imageFilePaths.ToArray());
+        }
+        else
+        {
+            await Toast.Make($"That file \"{fileResult.FullPath}\" is already stored in the resource helper, please try again.").Show();
+        }
+        
     }
 
     private async void addResourceBarsToPage(List<string> filePaths)
@@ -76,8 +85,6 @@ public partial class MainResourcePage : ContentPage
         {
             if (imageFilePath != "")
             {
-                Console.WriteLine(imageFilePath);
-                
                 StackLayout resourceDisplay = new StackLayout
                 {
                     Orientation = StackOrientation.Horizontal,
